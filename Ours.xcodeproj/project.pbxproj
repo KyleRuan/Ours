@@ -13,6 +13,9 @@
 		B7A8B64A1C916FE500127C70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B6481C916FE500127C70 /* Main.storyboard */; };
 		B7A8B64C1C916FE500127C70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B64B1C916FE500127C70 /* Assets.xcassets */; };
 		B7A8B64F1C916FE500127C70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B64D1C916FE500127C70 /* LaunchScreen.storyboard */; };
+		B7D634741C91CD5400F5FEB9 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D634711C91CD5400F5FEB9 /* DigitsKit.framework */; };
+		B7D634751C91CD5400F5FEB9 /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7D634721C91CD5400F5FEB9 /* DigitsKitResources.bundle */; };
+		B7D634761C91CD5400F5FEB9 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D634731C91CD5400F5FEB9 /* TwitterCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		B7A8B64B1C916FE500127C70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7A8B64E1C916FE500127C70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7A8B6501C916FE500127C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7D634711C91CD5400F5FEB9 /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
+		B7D634721C91CD5400F5FEB9 /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
+		B7D634731C91CD5400F5FEB9 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		CC3110DD976929BE238247C3 /* Pods_Ours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -34,6 +40,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD02DA7A663DB6375D5BB71F /* Pods_Ours.framework in Frameworks */,
+				B7D634761C91CD5400F5FEB9 /* TwitterCore.framework in Frameworks */,
+				B7D634741C91CD5400F5FEB9 /* DigitsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +60,9 @@
 		54251849FD1A79E8DD053ABB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7D634711C91CD5400F5FEB9 /* DigitsKit.framework */,
+				B7D634721C91CD5400F5FEB9 /* DigitsKitResources.bundle */,
+				B7D634731C91CD5400F5FEB9 /* TwitterCore.framework */,
 				CC3110DD976929BE238247C3 /* Pods_Ours.framework */,
 			);
 			name = Frameworks;
@@ -101,6 +112,7 @@
 				B7A8B63F1C916FE500127C70 /* Resources */,
 				AB8448334AF56264D2DC3B05 /* Embed Pods Frameworks */,
 				D00715823F4BDCD0AB29EB27 /* Copy Pods Resources */,
+				B7D634701C91CCC800F5FEB9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -149,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D634751C91CD5400F5FEB9 /* DigitsKitResources.bundle in Resources */,
 				B7A8B64F1C916FE500127C70 /* LaunchScreen.storyboard in Resources */,
 				B7A8B64C1C916FE500127C70 /* Assets.xcassets in Resources */,
 				B7A8B64A1C916FE500127C70 /* Main.storyboard in Resources */,
@@ -187,6 +200,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ours/Pods-Ours-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B7D634701C91CCC800F5FEB9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 8c59ce2ef539f97ffce3d652fab71f653a097762 389cdd876cdca6cf33dffe751b4445f2c4169af0bf71441b99349e1261baa0ab";
 		};
 		D00715823F4BDCD0AB29EB27 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -323,6 +349,10 @@
 			baseConfigurationReference = 3857BA636D00BBB48E9E6AAF /* Pods-Ours.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Ours/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -336,6 +366,10 @@
 			baseConfigurationReference = 7722582DDAA68EBA20EA6522 /* Pods-Ours.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Ours/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
