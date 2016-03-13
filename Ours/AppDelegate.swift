@@ -11,17 +11,35 @@ import Fabric
 import Crashlytics
 import DigitsKit
 import Appsee
+import RealmSwift
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+//    var realm:Realm
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        #if DEBUG
+            Fabric.sharedSDK().debug = true
+            Fabric.with([Crashlytics.self()])
+
+            #endif
+        
+        Digits.sharedInstance().startWithConsumerKey("oH5ypv5dqmi5JcWtZMnHcbYPd", consumerSecret: "AzWBzeejxj6miyzU0BXPPVnll3lfUsAcHMddHTTND7CdoktUMq")
+        Fabric.with([Digits.sharedInstance()])
         Fabric.with([Crashlytics.self,Appsee.self,Digits.self])
         // Override point for customization after application launch.
+        if  Digits.sharedInstance().session() == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signInViewController: AnyObject! = storyboard.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.logInWithPhoneViewController)
+            window?.rootViewController = signInViewController as? UIViewController
+        }
+
         return true
     }
 

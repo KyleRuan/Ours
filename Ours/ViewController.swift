@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+         Digits.sharedInstance().logOut()
         let authButton = DGTAuthenticateButton(authenticationCompletion: { (session: DGTSession?, error: NSError?) in
             if (session != nil) {
                 // TODO: associate the session userID with your user model
@@ -27,6 +27,8 @@ class ViewController: UIViewController {
             }
         })
         authButton.center = self.view.center
+        
+//        authButton.logOut()
         self.view.addSubview(authButton)
 
         // Do any additional setup after loading the view, typically from a nib.

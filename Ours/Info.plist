@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -30,9 +30,9 @@
 				<key>KitInfo</key>
 				<dict>
 					<key>consumerKey</key>
-					<string>vrgTo1cZvwyQvFGfsP2xxqCZc</string>
+					<string>oH5ypv5dqmi5JcWtZMnHcbYPd</string>
 					<key>consumerSecret</key>
-					<string>xMKDEAP59WXd5eG1xut6GVb7j1bpB3y7WtkbBxfCFCFnVxvXMk</string>
+					<string>AzWBzeejxj6miyzU0BXPPVnll3lfUsAcHMddHTTND7CdoktUMq</string>
 				</dict>
 				<key>KitName</key>
 				<string>Digits</string>
