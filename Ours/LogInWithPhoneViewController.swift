@@ -53,7 +53,13 @@ class LogInWithPhoneViewController: UIViewController {
                 print(session.authToken)
                 print(session.userID)
                 
-                
+                OursUserDefualt.user.objectId  = session.userID
+                OursUserDefualt.user.mobilePhoneNumber = session.phoneNumber
+                OursUserDefualt.user.signUpInBackgroundWithBlock({ (success, error) -> Void in
+                    if(success){
+                        print("signUp")
+                    }
+                })
             
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 

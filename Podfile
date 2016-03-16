@@ -9,7 +9,6 @@ pod 'Appsee'
 pod 'Alamofire'
 pod 'DeviceGuru'
 pod '1PasswordExtension'
-pod 'KeyboardMan'
 pod 'Ruler'
 pod 'Proposer'
 pod 'APAddressBook/Swift'
@@ -27,7 +26,10 @@ pod 'Fabric'
 pod 'Crashlytics'
 pod 'Digits'
 pod 'TwitterCore'
-pod 'AVOSCloudDynamic'
+pod 'AVOSCloudDynamic'               # 数据存储、短信、云引擎调用等基础服务模块
+pod 'AVOSCloudIMDynamic'             # 实时通信模块
+pod 'AVOSCloudCrashReportingDynamic' # 错误报告模块
+#pod 'RongCloudIMKit'
 end
 
 target :Ours do

@@ -22,6 +22,10 @@ class PickAvatarViewController: UIViewController{
     nextButton.title = ""
         
         nextButton.enabled = false
+        
+        if let image = OursUserDefualt.defaults.objectForKey(avatarURLStringKey){
+            avatarImage.image = (image as! UIImage)
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -118,6 +122,7 @@ extension PickAvatarViewController:UIImagePickerControllerDelegate ,UINavigation
         
     let origin = info[UIImagePickerControllerOriginalImage] as! UIImage
     self.avatarImage.image = origin
+        OursUserDefualt.defaults.setObject(origin, forKey: avatarURLStringKey)
         
 //        OursUserDefual
       dismissViewControllerAnimated(true , completion: nil)

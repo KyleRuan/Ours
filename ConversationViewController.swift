@@ -1,27 +1,46 @@
 //
-//  OurHomeTabBarController.swift
+//  ConversationViewController.swift
 //  Ours
 //
-//  Created by Jason on 16/3/11.
+//  Created by Jason on 16/3/15.
 //  Copyright © 2016年 com.kyleruan. All rights reserved.
 //
 
 import UIKit
+import AVOSCloud
 
-class OurHomeTabBarController: UITabBarController {
+import AVOSCloudIM
+
+class ConversationViewController:UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask))
+        
+        self.sendMessageToLover()
 
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func sendMessageToLover(){
+        let client = AVIMClient(clientId: "kyle")
+        
+        
+        client.openWithCallback { (succeeded, error) -> Void in
+            client.createConversationWithName("我和你", clientIds: ["lover"], callback: { (suc, error) -> Void in
+                if(succeeded){
+                    print("ooooooo")
+                }
+            })
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

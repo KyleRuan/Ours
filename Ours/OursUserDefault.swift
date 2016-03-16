@@ -14,9 +14,13 @@ import Crashlytics
 import DigitsKit
 import Appsee
 
+import AVOSCloud
+
+
+let nicknameKey = "nickname"
+
 let v1AccessTokenKey = "v1AccessToken"
 let userIDKey = "userID"
-let nicknameKey = "nickname"
 let introductionKey = "introduction"
 let avatarURLStringKey = "avatarURLString"
 let badgeKey = "badge"
@@ -33,6 +37,8 @@ let userLocationNameKey = "userLocationName"
 
 class OursUserDefualt {
     
+    static let user = AVUser()
+    
     static let defaults = NSUserDefaults(suiteName:OursConfig.appGroupID)!
     
     static var isLogined: Bool {
@@ -43,5 +49,8 @@ class OursUserDefualt {
             return false
         }
     }
+    
+    
+    
 
 }

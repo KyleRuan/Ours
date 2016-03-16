@@ -43,6 +43,8 @@ extension PickNickNameViewController:UITextFieldDelegate{
         }
         
         if !text.isEmpty {
+           OursUserDefualt.defaults.setObject(text, forKey: nicknameKey)
+            
               performSegueWithIdentifier("showAvatarPickViewController", sender: self)
         }
         
