@@ -35,13 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             #endif
         AVOSCloud.setApplicationId("bzxwedD39FXjUr6L5pii2jBr-gzGzoHsz", clientKey: "na43AGFaFfX3dv5T3qzkb9oe")
-    let  post = AVObject(className: "test")
-        post.setObject("nihao", forKey: "words")
-        post.saveInBackgroundWithBlock { (_, _) -> Void in
-            print("success")
-        }
+//    let  post = AVObject(className: "test")
+//        post.setObject("nihao", forKey: "words")
+//        post.saveInBackgroundWithBlock { (_, _) -> Void in
+//            print("success")
+//        }
         
-        Digits.sharedInstance().startWithConsumerKey("oH5ypv5dqmi5JcWtZMnHcbYPd", consumerSecret: "AzWBzeejxj6miyzU0BXPPVnll3lfUsAcHMddHTTND7CdoktUMq")
+        Digits.sharedInstance().startWithConsumerKey("14fKKhM4xC6AuGTt3cOVE3k6w", consumerSecret: "aKkFG3EiTUd9eDT1vPNDbUZY8mmj5ftep5j4y3f8wckfFMeoVa")
         Fabric.with([Digits.sharedInstance()])
         Fabric.with([Crashlytics.self,Appsee.self,Digits.self])
         // Override point for customization after application launch.

@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import AVOSCloud
+
+import AVOSCloudIM
+
 enum MessageType{
     case MessageMe
     case  MessageLover
 }
 
-class Message{
+class Message:AVIMMessage{
     
-    var me  = "the senter"
-    var toSomeone = "the receiver"
-    var  content = "the content"
+  
     var messageType = MessageType.MessageMe
-    init(text:String) {
-        
+    convenience init(text:String) {
+        self.init()
         content = text
         
         //        let width = screenWidth - iconWidth - padding
@@ -28,7 +30,12 @@ class Message{
         
         
     }
-    init(){
+    override init(){
+        super.init()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
         
     }
     
