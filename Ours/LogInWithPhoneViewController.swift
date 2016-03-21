@@ -38,7 +38,7 @@ class LogInWithPhoneViewController: UIViewController {
         config.appearance.bodyFont = UIFont(name: "HelveticaNeue-Italic", size: 16)
         config.appearance.accentColor = UIColor.blackColor()
         config.appearance.backgroundColor = OursConfig.BackgroundColor.Register
-        Digits.sharedInstance()
+//        Digits.sharedInstance()
             Digits.sharedInstance().authenticateWithViewController(self, configuration: config) { (session, error) -> Void in
             if (session != nil) {
      
