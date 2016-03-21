@@ -18,14 +18,16 @@ import AVOSCloud
 
 
 let nicknameKey = "nickname"
+let avatarURLStringKey = "avatarURLString"
+
+
+
 
 let v1AccessTokenKey = "v1AccessToken"
 let userIDKey = "userID"
 let introductionKey = "introduction"
-let avatarURLStringKey = "avatarURLString"
 let badgeKey = "badge"
 let pusherIDKey = "pusherID"
-
 let areaCodeKey = "areaCode"
 let mobileKey = "mobile"
 let discoveredUserSortStyleKey = "discoveredUserSortStyle"
@@ -33,13 +35,15 @@ let feedSortStyleKey = "feedSortStyle"
 let latitudeShiftKey = "latitudeShift"
 let longitudeShiftKey = "longitudeShift"
 let userLocationNameKey = "userLocationName"
-
+let isFirstLogIn = "isFirstLogIn"
 
 class OursUserDefualt {
     
-    static let user = AVUser()
+    static let userInfo = AVUser(className: "_User")
     
     static let defaults = NSUserDefaults(suiteName:OursConfig.appGroupID)!
+//    static let isFirstLogIn = defaults.boolForKey()
+    
     
     static var isLogined: Bool {
         

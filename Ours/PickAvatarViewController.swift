@@ -15,12 +15,11 @@ class PickAvatarViewController: UIViewController{
     @IBOutlet weak var avatarImage: UIImageView!
     
     @IBOutlet weak var nextButton: UIBarButtonItem!
-    private lazy var imagePicker:UIImagePickerController! = UIImagePickerController()
+    private  var imagePicker:UIImagePickerController! = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    nextButton.title = ""
-        
+        nextButton.title = ""
         nextButton.enabled = false
         
         if let image = OursUserDefualt.defaults.objectForKey(avatarURLStringKey){
@@ -35,44 +34,46 @@ class PickAvatarViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func ShowTheHomeViewController(sender: AnyObject) {
+        let  sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.homePageViewController)
+        self.presentViewController(vc, animated: true) { () -> Void in
+            //保存用户信息
+            OursUserDefualt.userInfo.signUpInBackgroundWithBlock({ (suc, err) -> Void in
+//               
+                
+                if suc{
+                    OursUserDefualt.userInfo.save()
+                    
+                }else{
+                    print(err)
+                }
+            })
+        }
+    }
 
     @IBAction func pickAvatarFromPhotoLibrary(sender: AnyObject) {
         selectImageControllerWithType(UIImagePickerControllerSourceType.PhotoLibrary)
-        nextButton.title = "Next"
-        
-        nextButton.enabled = true
+
     }
     
     
     
     @IBAction func pickAvatarFromCamera(sender: AnyObject) {
          selectImageControllerWithType(UIImagePickerControllerSourceType.Camera)
-        nextButton.title = "Next"
-        
-        nextButton.enabled = true
+      
     }
     
-    
-    
-    private func showNext(){
-        //show navigationBar
-        
-    }
     private func selectImageControllerWithType(type:UIImagePickerControllerSourceType){
         
         if !UIImagePickerController.isSourceTypeAvailable(type){
             //输出没有这个设备的alert
             OursAlert.alert(title: "Error", message: "The device don't support this Source", dismissTitle: "Cancel", inViewController: self,withDismissAction: nil)
-            
             return
         }
         imagePicker.sourceType = type
-        
-    
         imagePicker.delegate = self
-        
-        
-        
         switch type {
         case .Camera:
             if UIImagePickerController.isCameraDeviceAvailable(.Front){
@@ -88,10 +89,6 @@ class PickAvatarViewController: UIViewController{
         default: break
             
         }
-        
-        
-        
-        
     
     }
     
@@ -112,20 +109,19 @@ extension PickAvatarViewController:UIImagePickerControllerDelegate ,UINavigation
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true , completion: nil)
-        
     }
     
     
    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+    let origin = info[UIImagePickerControllerOriginalImage]
+    self.avatarImage.image = origin as! UIImage
+        //FIXME: 头像如何本地存储
         
-        
-    let origin = info[UIImagePickerControllerOriginalImage] as! UIImage
-    self.avatarImage.image = origin
-        OursUserDefualt.defaults.setObject(origin, forKey: avatarURLStringKey)
-        
-//        OursUserDefual
-      dismissViewControllerAnimated(true , completion: nil)
+//        OursUserDefualt.defaults.setObject(origin as! NSData, forKey: avatarURLStringKey)
+        nextButton.title = "Next"
+        nextButton.enabled = true
+       dismissViewControllerAnimated(true , completion: nil)
     }
     
 }

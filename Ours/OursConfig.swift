@@ -31,6 +31,7 @@ class OursConfig{
     struct StoryBoardID {
         static let homePageViewController = "HomePageViewController"
         static let logInWithPhoneViewController = "LogInWithPhoneViewController"
+        static let  registerUserInfomation = "RegisterUserInfomation"
     }
     
     struct FeedMedia {

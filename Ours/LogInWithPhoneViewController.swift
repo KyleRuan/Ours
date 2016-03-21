@@ -10,63 +10,62 @@ import UIKit
 import DigitsKit
 import Fabric
 import Crashlytics
+//import AVOSCloud
 
 
 class LogInWithPhoneViewController: UIViewController {
 
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
-        
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
+
     
-    
+//MARK: - 手机登入
     @IBAction func didTappedAtTheRejisterButton(){
         let config = DGTAuthenticationConfiguration(accountFields: .DefaultOptionMask)
         config.appearance = DGTAppearance()
         config.appearance.logoImage = UIImage(named: "app_logo.png")
         config.appearance.labelFont = UIFont(name: "HelveticaNeue-Bold", size: 16)
         config.appearance.bodyFont = UIFont(name: "HelveticaNeue-Italic", size: 16)
-//        config.phoneNumber = "+86"
-//        config.
-        //button的颜色
-                config.appearance.accentColor = UIColor.blackColor()
+        config.appearance.accentColor = UIColor.blackColor()
         config.appearance.backgroundColor = OursConfig.BackgroundColor.Register
-        
-        
-    
-
-
-            
-        
-            
-      Digits.sharedInstance()
-               Digits.sharedInstance().authenticateWithViewController(self, configuration: config) { (session, error) -> Void in
+        Digits.sharedInstance()
+            Digits.sharedInstance().authenticateWithViewController(self, configuration: config) { (session, error) -> Void in
             if (session != nil) {
-                
-                //用Leancode保存用户信息
-                print(session.authToken)
-                print(session.userID)
-                
-                OursUserDefualt.user.objectId  = session.userID
-                OursUserDefualt.user.mobilePhoneNumber = session.phoneNumber
-                OursUserDefualt.user.signUpInBackgroundWithBlock({ (success, error) -> Void in
-                    if(success){
-                        print("signUp")
-                    }
-                })
-            
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                
-                let vc =  sb.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.homePageViewController)
-                
-                
+     
+                let query = QueryDataBase.quaryUserPhoneNumber(session.phoneNumber)
+                    print(query.countObjects())
+                    if query.countObjects()>0{
+                        query.getFirstObjectInBackgroundWithBlock(){ (obj, e) -> Void in
+                            //已经注册，直接登入到主界面
+                            if obj != nil{
+                                let sb = UIStoryboard(name: "Main", bundle: nil)
+                                
+                                let vc =  sb.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.homePageViewController)
+                                
+                                self.presentViewController(vc, animated: true, completion: nil)
+                            }
+                        }
+                    }else {
+                        //到注册用户界面
+                        OursUserDefualt.userInfo.password = session.userID
+                        OursUserDefualt.userInfo.mobilePhoneNumber = session.phoneNumber
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        let vc =  sb.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.registerUserInfomation)
+                        
                         self.presentViewController(vc, animated: true, completion: nil)
+                        return
+                    }
             }
             else {
                 print(error.localizedDescription)
@@ -74,18 +73,7 @@ class LogInWithPhoneViewController: UIViewController {
         
     }
     
-        
-    }
-
     
-    
-    
-    
-    
-    
-    func showHomePageOrUserInformationEdit(){
-        
-//        if OursConfig.
     }
     
     
@@ -96,10 +84,6 @@ class LogInWithPhoneViewController: UIViewController {
         
      }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     
     

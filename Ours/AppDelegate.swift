@@ -35,31 +35,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             #endif
         AVOSCloud.setApplicationId("bzxwedD39FXjUr6L5pii2jBr-gzGzoHsz", clientKey: "na43AGFaFfX3dv5T3qzkb9oe")
-//    let  post = AVObject(className: "test")
-//        post.setObject("nihao", forKey: "words")
-//        post.saveInBackgroundWithBlock { (_, _) -> Void in
-//            print("success")
-//        }
+        
         
         Digits.sharedInstance().startWithConsumerKey("14fKKhM4xC6AuGTt3cOVE3k6w", consumerSecret: "aKkFG3EiTUd9eDT1vPNDbUZY8mmj5ftep5j4y3f8wckfFMeoVa")
         Fabric.with([Digits.sharedInstance()])
         Fabric.with([Crashlytics.self,Appsee.self,Digits.self])
-        // Override point for customization after application launch.
-//        if  Digits.sharedInstance().session() == nil {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let signInViewController: AnyObject! = storyboard.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.logInWithPhoneViewController)
-//            window?.rootViewController = signInViewController as? UIViewController
-//        }else{
-//            
-//            print(Digits.sharedInstance().session()?.authToken)
-//            let sb = UIStoryboard(name: "Main", bundle: nil)
-//            
-//            let vc =  sb.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.homePageViewController)
-//            
-//            window?.rootViewController = vc
-//      
-//            
-//        }
+        
+        
+        if  Digits.sharedInstance().session() == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signInViewController: AnyObject! = storyboard.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.logInWithPhoneViewController)
+            window?.rootViewController = signInViewController as? UIViewController
+        }else{
+            
+            print(Digits.sharedInstance().session()?.authToken)
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            
+            let vc =  sb.instantiateViewControllerWithIdentifier(OursConfig.StoryBoardID.homePageViewController)
+            
+            window?.rootViewController = vc
+      
+            
+        }
 
         return true
     }
