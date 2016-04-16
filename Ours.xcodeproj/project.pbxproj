@@ -27,9 +27,6 @@
 		B7D634781C91E1AE00F5FEB9 /* LogInWithPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D634771C91E1AE00F5FEB9 /* LogInWithPhoneViewController.swift */; };
 		B7DA1DEB1C97A8A30035AEA3 /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA1DEA1C97A8A30035AEA3 /* ChattingViewController.swift */; };
 		B7DA1DED1C97A96F0035AEA3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA1DEC1C97A96F0035AEA3 /* Message.swift */; };
-		B7E1EAB11C97B5970085E228 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E1EAB01C97B5970085E228 /* MessageTableViewCell.swift */; };
-		B7E1EAC71C97DDBE0085E228 /* RightCellViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E1EAC61C97DDBE0085E228 /* RightCellViewCell.swift */; };
-		B7E1EAF11C98417E0085E228 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E1EAF01C98417E0085E228 /* ConversationViewController.swift */; };
 		B7E1EB121C9957DB0085E228 /* ConfigChattingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E1EB111C9957DB0085E228 /* ConfigChattingViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +35,7 @@
 		7722582DDAA68EBA20EA6522 /* Pods-Ours.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ours.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ours/Pods-Ours.release.xcconfig"; sourceTree = "<group>"; };
 		B70F89091C92596800F9062F /* OursConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OursConfig.swift; sourceTree = "<group>"; };
 		B70F890E1C927D8A00F9062F /* OurHomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurHomeTabBarController.swift; sourceTree = "<group>"; };
+		B75D280C1CA82696006CCCEA /* Ours-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ours-Bridging-Header.h"; sourceTree = "<group>"; };
 		B79538A81C93C9940005C829 /* OursUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OursUserDefault.swift; sourceTree = "<group>"; };
 		B79538AE1C93EBB20005C829 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		B79538B01C952C000005C829 /* PickAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickAvatarViewController.swift; sourceTree = "<group>"; };
@@ -57,9 +55,6 @@
 		B7D634771C91E1AE00F5FEB9 /* LogInWithPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInWithPhoneViewController.swift; sourceTree = "<group>"; };
 		B7DA1DEA1C97A8A30035AEA3 /* ChattingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
 		B7DA1DEC1C97A96F0035AEA3 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		B7E1EAB01C97B5970085E228 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		B7E1EAC61C97DDBE0085E228 /* RightCellViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightCellViewCell.swift; sourceTree = "<group>"; };
-		B7E1EAF01C98417E0085E228 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationViewController.swift; path = ../ConversationViewController.swift; sourceTree = "<group>"; };
 		B7E1EB111C9957DB0085E228 /* ConfigChattingViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigChattingViewCell.swift; sourceTree = "<group>"; };
 		CC3110DD976929BE238247C3 /* Pods_Ours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,6 +105,7 @@
 		B7A8B6381C916FE500127C70 = {
 			isa = PBXGroup;
 			children = (
+				B75D280C1CA82696006CCCEA /* Ours-Bridging-Header.h */,
 				B7A8B6431C916FE500127C70 /* Ours */,
 				B7A8B6421C916FE500127C70 /* Products */,
 				20482F92734B6DEB389EA2AE /* Pods */,
@@ -134,20 +130,9 @@
 				B7B200331C9FC1E200B3AFD6 /* ViewController */,
 				B70F890B1C925AF400F9062F /* Extension */,
 				B7A8B6441C916FE500127C70 /* AppDelegate.swift */,
-				B7A8B6481C916FE500127C70 /* Main.storyboard */,
-				B7E1EAC61C97DDBE0085E228 /* RightCellViewCell.swift */,
 				B7A8B64B1C916FE500127C70 /* Assets.xcassets */,
 				B7A8B64D1C916FE500127C70 /* LaunchScreen.storyboard */,
 				B7A8B6501C916FE500127C70 /* Info.plist */,
-				B70F89091C92596800F9062F /* OursConfig.swift */,
-				B7B200311C9EFBC300B3AFD6 /* OursConstants.swift */,
-				B7E1EAF01C98417E0085E228 /* ConversationViewController.swift */,
-				B70F890E1C927D8A00F9062F /* OurHomeTabBarController.swift */,
-				B79538A81C93C9940005C829 /* OursUserDefault.swift */,
-				B79538B21C95345A0005C829 /* OursAlert.swift */,
-				B7DA1DEA1C97A8A30035AEA3 /* ChattingViewController.swift */,
-				B7E1EB111C9957DB0085E228 /* ConfigChattingViewCell.swift */,
-				B7E1EAB01C97B5970085E228 /* MessageTableViewCell.swift */,
 			);
 			path = Ours;
 			sourceTree = "<group>";
@@ -155,6 +140,8 @@
 		B7B200331C9FC1E200B3AFD6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B7DA1DEA1C97A8A30035AEA3 /* ChattingViewController.swift */,
+				B70F890E1C927D8A00F9062F /* OurHomeTabBarController.swift */,
 				B7B200341C9FC20100B3AFD6 /* LogInAndRegister */,
 			);
 			name = ViewController;
@@ -173,6 +160,8 @@
 		B7B200351C9FCA7D00B3AFD6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B7A8B6481C916FE500127C70 /* Main.storyboard */,
+				B7E1EB111C9957DB0085E228 /* ConfigChattingViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -180,6 +169,10 @@
 		B7B200361C9FCA8F00B3AFD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B79538B21C95345A0005C829 /* OursAlert.swift */,
+				B7B200311C9EFBC300B3AFD6 /* OursConstants.swift */,
+				B70F89091C92596800F9062F /* OursConfig.swift */,
+				B79538A81C93C9940005C829 /* OursUserDefault.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -332,14 +325,11 @@
 			files = (
 				B7D634781C91E1AE00F5FEB9 /* LogInWithPhoneViewController.swift in Sources */,
 				B79538B31C95345A0005C829 /* OursAlert.swift in Sources */,
-				B7E1EAF11C98417E0085E228 /* ConversationViewController.swift in Sources */,
-				B7E1EAC71C97DDBE0085E228 /* RightCellViewCell.swift in Sources */,
 				B79538B11C952C000005C829 /* PickAvatarViewController.swift in Sources */,
 				B70F890A1C92596800F9062F /* OursConfig.swift in Sources */,
 				B79538A91C93C9940005C829 /* OursUserDefault.swift in Sources */,
 				B7B200301C9EE58C00B3AFD6 /* QueryDataBase.swift in Sources */,
 				B79538AF1C93EBB20005C829 /* RoundImageView.swift in Sources */,
-				B7E1EAB11C97B5970085E228 /* MessageTableViewCell.swift in Sources */,
 				B7E1EB121C9957DB0085E228 /* ConfigChattingViewCell.swift in Sources */,
 				B7A8B6451C916FE500127C70 /* AppDelegate.swift in Sources */,
 				B79538B51C9543FF0005C829 /* PickNickNameViewController.swift in Sources */,
@@ -470,6 +460,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RuanKai.Our;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ours-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -489,6 +480,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RuanKai.Our;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ours-Bridging-Header.h";
 			};
 			name = Release;
 		};

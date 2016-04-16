@@ -22,7 +22,7 @@ class PickAvatarViewController: UIViewController{
         nextButton.title = ""
         nextButton.enabled = false
         
-        if let image = OursUserDefualt.defaults.objectForKey(avatarURLStringKey){
+        if let image = OursUserDefualt.defaults.objectForKey(OursConstants.avatarURLStringKey){
             avatarImage.image = (image as! UIImage)
         }
 
@@ -115,7 +115,7 @@ extension PickAvatarViewController:UIImagePickerControllerDelegate ,UINavigation
    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
     let origin = info[UIImagePickerControllerOriginalImage]
-    self.avatarImage.image = origin as! UIImage
+     self.avatarImage.image = origin as? UIImage
         //FIXME: 头像如何本地存储
         
 //        OursUserDefualt.defaults.setObject(origin as! NSData, forKey: avatarURLStringKey)

@@ -9,9 +9,10 @@
 import UIKit
 
 
+
+/// 存放配置文件的
 class OursConfig{
-//    #e91263
-//    255,182,193
+
     
     static let appGroupID: String = "com.kyelruan"
 
@@ -36,7 +37,7 @@ class OursConfig{
     
     struct FeedMedia {
         static let backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1)
-       static let messageToolBarColor = UIColor(red:0.557, green:0.557, blue:0.576, alpha:1)
+        static let messageToolBarColor = UIColor(red:0.557, green:0.557, blue:0.576, alpha:1)
     }
 }
 

@@ -10,7 +10,6 @@ import UIKit
 import Fabric
 import Crashlytics
 import DigitsKit
-import Appsee
 import RealmSwift
 import AVOSCloud
 
@@ -29,17 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        #if DEBUG
-            Fabric.sharedSDK().debug = true
-            Fabric.with([Crashlytics.self()])
-
-            #endif
-        AVOSCloud.setApplicationId("bzxwedD39FXjUr6L5pii2jBr-gzGzoHsz", clientKey: "na43AGFaFfX3dv5T3qzkb9oe")
+//         #if DEBUG
+//            Fabric.sharedSDK().debug = true
+//            Fabric.with([Crashlytics.self() ])
+//
+//            #endif
+        AVOSCloud.setApplicationId(OursConstants.AppKeys.AVCloudAppKeys, clientKey: OursConstants.AppKeys.AVCloudClientKeys)
         
         
-        Digits.sharedInstance().startWithConsumerKey("14fKKhM4xC6AuGTt3cOVE3k6w", consumerSecret: "aKkFG3EiTUd9eDT1vPNDbUZY8mmj5ftep5j4y3f8wckfFMeoVa")
+        Digits.sharedInstance().startWithConsumerKey(OursConstants.AppKeys.DigitsConsumerKey, consumerSecret: OursConstants.AppKeys.DigitsConsumerSecret)
         Fabric.with([Digits.sharedInstance()])
-        Fabric.with([Crashlytics.self,Appsee.self,Digits.self])
+        Fabric.with([Crashlytics.self,Digits.self])
         
         
         if  Digits.sharedInstance().session() == nil {

@@ -12,13 +12,12 @@ import Fabric
 
 import Crashlytics
 import DigitsKit
-import Appsee
+
 
 import AVOSCloud
 
 
-let nicknameKey = "nickname"
-let avatarURLStringKey = "avatarURLString"
+
 
 
 
@@ -37,6 +36,9 @@ let longitudeShiftKey = "longitudeShift"
 let userLocationNameKey = "userLocationName"
 let isFirstLogIn = "isFirstLogIn"
 
+
+
+/// 存放用户信息的
 class OursUserDefualt {
     
     static let userInfo = AVUser(className: "_User")

@@ -16,6 +16,9 @@ class ChattingViewController: UIViewController {
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var contentListTableView: UITableView!
     
+    
+    var frameOfTextview = CGRectZero
+    
     var targetClientId:String = "Lover"
     var client :AVIMClient!
  
@@ -32,40 +35,44 @@ class ChattingViewController: UIViewController {
             contentListTableView.reloadData()
         }
     }
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    client = AVIMClient(clientId: "kyle")
+//    client = AVIMClient(clientId: OursUserDefualt.userInfo.username)
+        
+        client = AVIMClient(clientId: "kyle")
         
         client.delegate = self
         
         
         self.client.openWithCallback { (suc, error) -> Void in
             if (suc){
-//                self.client.conversationQuery().findConversationsWithCallback({ (conversation, error) -> Void in
-                
 
-//                    for con in conversation{
-//                        let cos = con as! AVIMConversation
-//                        self.messages.appendContentsOf(cos.queryMessagesFromCacheWithLimit(5) as! [AVIMMessage])
-                    
-//                    }
-                    
-                    
-//                })
             }
         }
         
-//       currentConversation.queryMessagesFromServerWithLimit(kqueryLimit) { (res, erroe) -> Void in
-//          self.messages.appendContentsOf(res as! [Message])
-//        }
+    
+        
+        print(#file)
+       frameOfTextview =  self.inputTextView.frame
+
         self.inputTextView.backgroundColor = OursConfig.BackgroundColor.messageToolBarColor
         contentListTableView.userInteractionEnabled = true
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ChattingViewController.keyBoardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ChattingViewController.keyBoardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
 
         
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.hidden = true
+    }
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -128,6 +135,8 @@ class ChattingViewController: UIViewController {
 }
 
 
+// MARK: - UITableViewDelegate,UITableViewDataSource
+
 extension ChattingViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,29 +147,31 @@ extension ChattingViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        
-            let  cell = tableView.dequeueReusableCellWithIdentifier("ChattingCell",forIndexPath: indexPath)
+            let  cell = tableView.dequeueReusableCellWithIdentifier("ChattingCell")
+        
+        
         if messages.count == 0 {
-            return cell
+            return cell!
         }
         let isMe = (messages[indexPath.row].clientId == client.clientId)
             if  isMe  {
                 let avatar = UIImage(named: "app_logo")
                 let imageview = UIImageView(frame: CGRectMake(OursConfig.screenWidth-60, 10, 50, 50))
                 imageview.image = avatar
-                cell.addSubview(imageview)
+                cell!.addSubview(imageview)
             }else{
               
                 let avatar = UIImage(named: "app_logo")
                 let imageview = UIImageView(frame: CGRectMake(10, 10, 50, 50))
                 imageview.image = avatar
-                cell.addSubview(imageview)
+                cell!.addSubview(imageview)
                 
             }
             
         
-            cell.addSubview(configCell.bubbleView(messages[indexPath.row].content,ISME: isMe ,position:65))
+            cell!.addSubview(configCell.bubbleView(messages[indexPath.row].content,ISME: isMe ,position:65))
             
-            return cell
+            return cell!
         }
 
 
@@ -205,6 +216,7 @@ extension ChattingViewController:UITableViewDelegate,UITableViewDataSource{
 }
 
 
+// MARK: - keyboard notification
 extension ChattingViewController{
     //keyboard notification
     func keyBoardWillShow(note:NSNotification){
@@ -245,7 +257,7 @@ extension ChattingViewController{
 }
 
 
-
+// MARK: - AVIMClientDelegate
 extension ChattingViewController:AVIMClientDelegate{
     func conversation(conversation: AVIMConversation!, didReceiveUnread unread: Int) {
         //记录是否已经已读
@@ -274,7 +286,7 @@ extension ChattingViewController:AVIMClientDelegate{
     
 }
 
-
+// MARK: - UITextViewDelegate
 extension ChattingViewController:UITextViewDelegate{
   
 
@@ -287,6 +299,8 @@ extension ChattingViewController:UITextViewDelegate{
     }
     func textViewDidChange(textView: UITextView) {
      
+         setTextViewSize()
+        
         if(textView.text.characters.last == "\n"){
            senderMessage(textView.text)
         }
@@ -295,15 +309,38 @@ extension ChattingViewController:UITextViewDelegate{
     
     private func senderMessage(text:String){
         if text != "\n" && text != ""{
-//            var mes = AVIMMessage(content: text)
-//            
-//        
-////            mes.clientId = client.clientId
-//           messages.append(mes)
+            
           self.sendMessageToLover()
             inputTextView.text = ""
       }
 
     
 }
+    
+    
+    func setTextViewSize(){
+        let maxHeight:CGFloat = 130
+        
+//        var maxSize = CGSizeMake(inputTextView.size.width, MAXFLOAT);
+        
+        let  constraintSize = CGSizeMake(inputTextView.frame.width, 1000)
+        var size = inputTextView.sizeThatFits(constraintSize);
+        
+        if size.height > maxHeight {
+            size.height = maxHeight
+            inputTextView.scrollEnabled = true
+        }else {
+           inputTextView.scrollEnabled = false
+        }
+        
+        
+
+        let delet = size.height - inputTextView.frame.height ;
+        inputTextView.frame = CGRectMake(inputTextView.frame.origin.x, inputTextView.frame.origin.y-delet, inputTextView.frame.size.width, size.height)
+//        toolBar.frame = CGRectMake(toolBar.frame.origin.x, toolBar.frame.origin.y-delet, toolBar.frame.width, size.height)
+        
+        
+
+        
+    }
 }
